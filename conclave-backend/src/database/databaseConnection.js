@@ -1,7 +1,6 @@
 import {Sequelize} from 'sequelize';
 import {dbDialect, dbHost, dbName, dbPassword, dbUser} from '../config';
 
-
 export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   host: dbHost,
   dialect: dbDialect,

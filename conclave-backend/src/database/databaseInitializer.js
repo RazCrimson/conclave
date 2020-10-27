@@ -1,12 +1,12 @@
-import {admin} from "./adminModel";
-import {user} from "./userModel";
-import {moderator} from "./moderatorModel";
-import {friends} from "./friendsModel";
-import {channel} from "./channelModel";
-import {post} from "./postModel";
-import {postVote} from "./postVoteModel";
-import {comment} from "./commentModel";
-import {commentVote} from "./commentVoteModel";
+import {admin} from "../models/adminModel";
+import {user} from "../models/userModel";
+import {moderator} from "../models/moderatorModel";
+import {friends} from "../models/friendsModel";
+import {channel} from "../models/channelModel";
+import {post} from "../models/postModel";
+import {postVote} from "../models/postVoteModel";
+import {comment} from "../models/commentModel";
+import {commentVote} from "../models/commentVoteModel";
 
 (async () => {
   try {

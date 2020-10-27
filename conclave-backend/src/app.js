@@ -2,7 +2,7 @@ import logger from "morgan";
 import express from "express";
 import cookieParser from "cookie-parser";
 
-import "./models/databaseInitializer";
+import "./database/databaseInitializer";
 
 import indexRouter from "./routes/index";
 
