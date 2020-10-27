@@ -25,9 +25,7 @@ const CommentVote = sequelize.define('commentVote', {
     type: DataTypes.BOOLEAN,
     allowNull: true,
   },
-}, {
-  timestamps: true,
-});
+}, { timestamps: true });
 
 User.hasMany(CommentVote);
 Comment.hasMany(CommentVote);

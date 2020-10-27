@@ -3,6 +3,10 @@ import sequelize from '../database/databaseConnection';
 import Admin from './adminModel';
 import User from './userModel';
 
+// Added to have comments for all attributes in table
+// Can be removed when at least one attribute is directly specified
+//
+// eslint-disable-next-line object-curly-newline
 const Moderator = sequelize.define('moderator', {
   // userID: {
   //   type: DataTypes.INTEGER,
@@ -21,6 +25,8 @@ const Moderator = sequelize.define('moderator', {
   //   },
   //   onUpdate: 'CASCADE'
   // }
+// Read above comment at the start of the model definition
+// eslint-disable-next-line object-curly-newline
 }, {
   timestamps: true,
   paranoid: true,

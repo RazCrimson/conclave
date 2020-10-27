@@ -26,9 +26,7 @@ const Post = sequelize.define('post', {
   //   },
   //   onUpdate: 'CASCADE'
   // },
-  content: {
-    type: DataTypes.STRING(5000),
-  },
+  content: { type: DataTypes.STRING(5000) },
   postType: {
     type: DataTypes.STRING(3),
     allowNull: false,

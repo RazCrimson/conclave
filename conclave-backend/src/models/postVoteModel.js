@@ -25,9 +25,7 @@ const PostVote = sequelize.define('postVote', {
     type: DataTypes.BOOLEAN,
     allowNull: true,
   },
-}, {
-  timestamps: true,
-});
+}, { timestamps: true });
 
 User.hasMany(PostVote);
 Post.hasMany(PostVote);

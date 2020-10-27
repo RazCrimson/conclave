@@ -10,7 +10,9 @@ export const localSignInStrategy = new LocalStrategy({
 ((username, unHashedPassword, done) => {
   User.findByUsernameAndPassword(username, unHashedPassword)
     .then((user) => {
-      if (!user) return done(null, false, { message: 'Invalid Username & Password Combination.' });
+      if (!user) {
+        return done(null, false, { message: 'Invalid Username & Password Combination.' });
+      }
       return done(null, user);
     }).catch((err) => done(err));
 }));

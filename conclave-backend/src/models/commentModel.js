@@ -26,9 +26,7 @@ const Comment = sequelize.define('comment', {
   //   },
   //   onUpdate: 'CASCADE'
   // },
-  content: {
-    type: DataTypes.STRING(5000),
-  },
+  content: { type: DataTypes.STRING(5000) },
   voteCount: {
     type: DataTypes.INTEGER,
     default: 0,
