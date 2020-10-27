@@ -1,9 +1,9 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {hash} from 'bcrypt';
+import bcrypt from 'bcrypt';
 
-export const user = sequelize.define('user', {
+export const User = sequelize.define('user', {
   userID: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -33,15 +33,15 @@ export const user = sequelize.define('user', {
   paranoid: true
 });
 
-user.addHook('beforeCreate', async (user) => {
-  user.password = await hash(user.password, 10);
+User.addHook('beforeCreate', async (user) => {
+  user.password = await bcrypt.hash(user.password, 10);
 });
 
-user.addHook('beforeUpdate', async (user) => {
+User.addHook('beforeUpdate', async (user) => {
   if (user.password.changed())
-    user.password = await hash(user.password, 10);
+    user.password = await bcrypt.hash(user.password, 10);
 });
 
-user.findByUsernameAndPassword = async (username, unHashedPassword) => {
-  return user.findOne({where: {username: username, password: await hash(unHashedPassword, 10)}})
+User.findByUsernameAndPassword = async (username, unHashedPassword) => {
+  return User.findOne({where: {username: username, password: await bcrypt.hash(unHashedPassword, 10)}})
 }

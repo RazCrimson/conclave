@@ -1,9 +1,9 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {user} from "./userModel";
+import {User} from "./userModel";
 
-export const friends = sequelize.define('friends', {
+export const Friends = sequelize.define('friends', {
   // userID1: {
   //   type: DataTypes.INTEGER,
   //   references: {
@@ -38,5 +38,5 @@ export const friends = sequelize.define('friends', {
   paranoid: true
 });
 
-user.belongsToMany(user, {as: 'userID1', through: 'friends' });
-user.belongsToMany(user, {as: 'userID2', through: 'friends' });
+User.belongsToMany(User, {as: 'userID1', through: 'friends' });
+User.belongsToMany(User, {as: 'userID2', through: 'friends' });

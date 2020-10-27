@@ -1,10 +1,10 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {user} from "./userModel";
-import {post} from "./postModel";
+import {User} from "./userModel";
+import {Post} from "./postModel";
 
-export const comment = sequelize.define('comment', {
+export const Comment = sequelize.define('comment', {
   commentID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
@@ -39,5 +39,5 @@ export const comment = sequelize.define('comment', {
   paranoid: true
 });
 
-user.hasMany(comment);
-post.hasMany(comment);
+User.hasMany(Comment);
+Post.hasMany(Comment);

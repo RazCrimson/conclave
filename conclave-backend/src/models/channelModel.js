@@ -1,9 +1,9 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {admin} from './adminModel';
+import {Admin} from './adminModel';
 
-export const channel = sequelize.define('channel', {
+export const Channel = sequelize.define('channel', {
   channelID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
@@ -41,4 +41,4 @@ export const channel = sequelize.define('channel', {
   paranoid:true
 });
 
-admin.hasMany(channel);
+Admin.hasMany(Channel);

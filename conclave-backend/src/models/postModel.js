@@ -1,10 +1,10 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {user} from "./userModel";
-import {channel} from "./channelModel";
+import {User} from "./userModel";
+import {Channel} from "./channelModel";
 
-export const post = sequelize.define('post', {
+export const Post = sequelize.define('post', {
   postID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
@@ -53,5 +53,5 @@ export const post = sequelize.define('post', {
   paranoid: true
 });
 
-user.hasMany(post);
-channel.hasMany(post);
+User.hasMany(Post);
+Channel.hasMany(Post);

@@ -1,10 +1,10 @@
 import {DataTypes} from 'sequelize';
 import {sequelize} from '../database/databaseConnection';
 
-import {user} from "./userModel";
-import {post} from "./postModel";
+import {User} from "./userModel";
+import {Post} from "./postModel";
 
-export const postVote = sequelize.define('postVote', {
+export const PostVote = sequelize.define('postVote', {
   // userID: {
   //   type: DataTypes.INTEGER.UNSIGNED,
   //   references: {
@@ -29,5 +29,5 @@ export const postVote = sequelize.define('postVote', {
   timestamps: true,
 });
 
-user.hasMany(postVote);
-post.hasMany(postVote);
+User.hasMany(PostVote);
+Post.hasMany(PostVote);
