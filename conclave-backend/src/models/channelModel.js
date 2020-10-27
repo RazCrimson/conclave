@@ -1,13 +1,13 @@
-import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/databaseConnection';
+import { DataTypes } from 'sequelize';
+import sequelize from '../database/databaseConnection';
 
-import {Admin} from './adminModel';
+import Admin from './adminModel';
 
-export const Channel = sequelize.define('channel', {
+const Channel = sequelize.define('channel', {
   channelID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   // adminID: {
   //   type: DataTypes.INTEGER.UNSIGNED,
@@ -19,26 +19,28 @@ export const Channel = sequelize.define('channel', {
   // },
   channelName: {
     type: DataTypes.STRING(128),
-    allowNull: false
+    allowNull: false,
   },
   channelDescription: {
     type: DataTypes.STRING(512),
-    allowNull: false
+    allowNull: false,
   },
   postCount: {
     type: DataTypes.INTEGER.UNSIGNED,
     defaultValue: 0,
-    allowNull: false
+    allowNull: false,
   },
   accountCreation: {
     type: DataTypes.DATE,
     default: DataTypes.NOW,
-    allowNull: false
+    allowNull: false,
 
-  }
+  },
 }, {
-  timestamps:true,
-  paranoid:true
+  timestamps: true,
+  paranoid: true,
 });
 
 Admin.hasMany(Channel);
+
+export default Channel;

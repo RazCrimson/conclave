@@ -1,10 +1,10 @@
-import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/databaseConnection';
+import { DataTypes } from 'sequelize';
+import sequelize from '../database/databaseConnection';
 
-import {User} from "./userModel";
-import {Post} from "./postModel";
+import User from './userModel';
+import Post from './postModel';
 
-export const PostVote = sequelize.define('postVote', {
+const PostVote = sequelize.define('postVote', {
   // userID: {
   //   type: DataTypes.INTEGER.UNSIGNED,
   //   references: {
@@ -23,7 +23,7 @@ export const PostVote = sequelize.define('postVote', {
   // },
   voteState: {
     type: DataTypes.BOOLEAN,
-    allowNull: true
+    allowNull: true,
   },
 }, {
   timestamps: true,
@@ -31,3 +31,5 @@ export const PostVote = sequelize.define('postVote', {
 
 User.hasMany(PostVote);
 Post.hasMany(PostVote);
+
+export default PostVote;

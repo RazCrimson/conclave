@@ -1,14 +1,14 @@
-import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/databaseConnection';
+import { DataTypes } from 'sequelize';
+import sequelize from '../database/databaseConnection';
 
-import {User} from "./userModel";
-import {Channel} from "./channelModel";
+import User from './userModel';
+import Channel from './channelModel';
 
-export const Post = sequelize.define('post', {
+const Post = sequelize.define('post', {
   postID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   // userID: {
   //   type: DataTypes.INTEGER.UNSIGNED,
@@ -31,27 +31,29 @@ export const Post = sequelize.define('post', {
   },
   postType: {
     type: DataTypes.STRING(3),
-    allowNull: false
+    allowNull: false,
   },
   accountCreation: {
     type: DataTypes.DATE,
     default: DataTypes.NOW,
-    allowNull: false
+    allowNull: false,
   },
   voteCount: {
     type: DataTypes.INTEGER,
     default: 0,
-    allowNull: false
+    allowNull: false,
   },
   commentCount: {
     type: DataTypes.INTEGER.UNSIGNED,
     default: 0,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
   timestamps: true,
-  paranoid: true
+  paranoid: true,
 });
 
 User.hasMany(Post);
 Channel.hasMany(Post);
+
+export default Post;

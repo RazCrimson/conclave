@@ -1,9 +1,13 @@
 import dotenv from 'dotenv';
+
 dotenv.config();
 export const welcomeText = process.env.WELCOME_TEXT;
 
-export const dbDialect = process.env.DATABASE_DIALECT;
-export const dbHost = process.env.DATABASE_HOST;
-export const dbName = process.env.DATABASE_NAME;
-export const dbUser = process.env.DATABASE_USER;
-export const dbPassword = process.env.DATABASE_PASSWORD;
+// Database environment variables
+export const databaseEnv = {
+  databaseName: process.env.DATABASE_NAME,
+  dialect: process.env.DATABASE_DIALECT,
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+};

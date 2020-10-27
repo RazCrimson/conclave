@@ -1,9 +1,9 @@
-import {sequelize} from '../database/databaseConnection';
+import sequelize from '../database/databaseConnection';
 
-import {Admin} from "./adminModel";
-import {User} from "./userModel";
+import Admin from './adminModel';
+import User from './userModel';
 
-export const Moderator = sequelize.define('moderator', {
+const Moderator = sequelize.define('moderator', {
   // userID: {
   //   type: DataTypes.INTEGER,
   //   primaryKey: true,
@@ -23,8 +23,10 @@ export const Moderator = sequelize.define('moderator', {
   // }
 }, {
   timestamps: true,
-  paranoid: true
+  paranoid: true,
 });
 
 Admin.hasMany(Moderator);
 Moderator.belongsTo(User);
+
+export default Moderator;

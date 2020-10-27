@@ -1,14 +1,14 @@
-import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/databaseConnection';
+import { DataTypes } from 'sequelize';
+import sequelize from '../database/databaseConnection';
 
-import {User} from "./userModel";
-import {Post} from "./postModel";
+import User from './userModel';
+import Post from './postModel';
 
-export const Comment = sequelize.define('comment', {
+const Comment = sequelize.define('comment', {
   commentID: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   // userID: {
   //   type: DataTypes.INTEGER.UNSIGNED,
@@ -32,12 +32,14 @@ export const Comment = sequelize.define('comment', {
   voteCount: {
     type: DataTypes.INTEGER,
     default: 0,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
   timestamps: true,
-  paranoid: true
+  paranoid: true,
 });
 
 User.hasMany(Comment);
 Post.hasMany(Comment);
+
+export default Comment;

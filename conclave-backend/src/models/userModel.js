@@ -1,47 +1,52 @@
-import {DataTypes} from 'sequelize';
-import {sequelize} from '../database/databaseConnection';
-
+import { DataTypes } from 'sequelize';
 import bcrypt from 'bcrypt';
+import sequelize from '../database/databaseConnection';
 
-export const User = sequelize.define('user', {
+const User = sequelize.define('user', {
   userID: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   username: {
     type: DataTypes.STRING(50),
     unique: true,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING(100),
     unique: true,
-    allowNull: false
+    allowNull: false,
   },
   password: {
     type: DataTypes.STRING(30),
-    allowNull: false
+    allowNull: false,
   },
   lastOnlineAt: {
     type: DataTypes.DATE,
     default: DataTypes.NOW,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
   timestamps: true,
-  paranoid: true
+  paranoid: true,
 });
 
 User.addHook('beforeCreate', async (user) => {
+  // eslint-disable-next-line no-param-reassign
   user.password = await bcrypt.hash(user.password, 10);
 });
 
 User.addHook('beforeUpdate', async (user) => {
-  if (user.password.changed())
-    user.password = await bcrypt.hash(user.password, 10);
+  // eslint-disable-next-line no-param-reassign
+  if (user.password.changed()) user.password = await bcrypt.hash(user.password, 10);
 });
 
-User.findByUsernameAndPassword = async (username, unHashedPassword) => {
-  return User.findOne({where: {username: username, password: await bcrypt.hash(unHashedPassword, 10)}})
-}
+User.findByUsernameAndPassword = async (username, unHashedPassword) => User.findOne({
+  where: {
+    username,
+    password: await bcrypt.hash(unHashedPassword, 10),
+  },
+});
+
+export default User;

@@ -1,10 +1,10 @@
-import {Sequelize} from 'sequelize';
-import {dbDialect, dbHost, dbName, dbPassword, dbUser} from '../config';
+import { Sequelize } from 'sequelize';
+import { databaseEnv } from '../config';
 
-export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-  host: dbHost,
-  dialect: dbDialect,
-  logging: console.log
+const sequelize = new Sequelize(databaseEnv.databaseName, databaseEnv.user, databaseEnv.password, {
+  host: databaseEnv.host,
+  dialect: databaseEnv.dialect,
+  logging: console.log,
 });
 
 (async () => {
@@ -15,3 +15,5 @@ export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
     console.error('Unable to connect to the database:', error);
   }
 })();
+
+export default sequelize;
