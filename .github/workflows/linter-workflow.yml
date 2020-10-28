@@ -19,4 +19,5 @@ jobs:
               with:
                   node-version: '12'
             - run: npm install
+            - run: npm install --only=dev
             - run: npm run lint
