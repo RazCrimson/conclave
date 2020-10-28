@@ -7,6 +7,10 @@ jobs:
     lint-backend:
         runs-on: ubuntu-latest
         name: Backend - Lint Check
+        defaults:
+            run:
+                shell: bash
+                working-directory: conclave-backend
         steps:
             - name: Checkout
               uses: actions/checkout@v2
@@ -14,6 +18,5 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: '12'
-            - working-directory: conclave-backend
             - run: npm install
             - run: npm run lint
