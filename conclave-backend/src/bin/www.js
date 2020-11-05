@@ -44,13 +44,13 @@ const onError = (error) => {
   switch (error.code) {
     case 'EACCES': {
       // eslint-disable-next-line no-alert
-      alert(`${bind} requires elevated privileges`);
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     }
     case 'EADDRINUSE': {
       // eslint-disable-next-line no-alert
-      alert(`${bind} is already in use`);
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     }
