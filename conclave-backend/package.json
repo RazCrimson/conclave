@@ -20,6 +20,7 @@
     "morgan": "~1.9.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "passport-session": "^1.0.2",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
     "redis": "^3.0.2",
