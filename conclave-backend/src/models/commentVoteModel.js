@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../database/databaseConnection';
+import sequelize from '../connections/databaseConnection';
 
 import User from './userModel';
 import Comment from './commentModel';

@@ -1,4 +1,4 @@
-import sequelize from '../database/databaseConnection';
+import sequelize from '../connections/databaseConnection';
 
 import Admin from './adminModel';
 import User from './userModel';
