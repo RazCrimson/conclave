@@ -11,3 +11,9 @@ export const databaseEnv = {
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
 };
+
+export const sessionStoreEnv = {
+  secretToken: process.env.SECRET_TOKEN,
+  host: process.env.SESSION_STORE_HOST || 'localhost',
+  port: process.env.SESSION_STORE_PORT || 6379,
+};
