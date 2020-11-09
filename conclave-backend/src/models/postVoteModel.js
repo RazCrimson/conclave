@@ -29,5 +29,7 @@ const PostVote = sequelize.define('postVote', {
 
 User.hasMany(PostVote);
 Post.hasMany(PostVote);
+PostVote.belongsTo(User);
+PostVote.belongsTo(Post);
 
 export default PostVote;

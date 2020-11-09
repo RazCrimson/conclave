@@ -33,6 +33,6 @@ const Moderator = sequelize.define('moderator', {
 });
 
 Admin.hasMany(Moderator);
-Moderator.belongsTo(User);
+Moderator.belongsTo(User, { foreignKey: 'userID', targetKey: 'userID' });
 
 export default Moderator;

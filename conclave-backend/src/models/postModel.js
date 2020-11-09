@@ -53,5 +53,7 @@ const Post = sequelize.define('post', {
 
 User.hasMany(Post);
 Channel.hasMany(Post);
+Post.belongsTo(User);
+Post.belongsTo(Channel);
 
 export default Post;

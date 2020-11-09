@@ -29,5 +29,7 @@ const CommentVote = sequelize.define('commentVote', {
 
 User.hasMany(CommentVote);
 Comment.hasMany(CommentVote);
+CommentVote.belongsTo(User);
+CommentVote.belongsTo(Comment);
 
 export default CommentVote;

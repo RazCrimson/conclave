@@ -42,5 +42,6 @@ const Channel = sequelize.define('channel', {
 });
 
 Admin.hasMany(Channel);
+Channel.belongsTo(Admin);
 
 export default Channel;
