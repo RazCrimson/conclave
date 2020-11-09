@@ -27,9 +27,9 @@ const PostVote = sequelize.define('postVote', {
   },
 }, { timestamps: true });
 
-User.hasMany(PostVote);
-Post.hasMany(PostVote);
-PostVote.belongsTo(User);
-PostVote.belongsTo(Post);
+User.hasMany(PostVote, { foreignKey: 'userID' });
+Post.hasMany(PostVote, { foreignKey: 'postVoteID' });
+PostVote.belongsTo(User, { foreignKey: 'userID' });
+PostVote.belongsTo(Post, { foreignKey: 'postVoteID' });
 
 export default PostVote;

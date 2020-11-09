@@ -41,7 +41,7 @@ const Channel = sequelize.define('channel', {
   paranoid: true,
 });
 
-Admin.hasMany(Channel);
-Channel.belongsTo(Admin);
+Admin.hasMany(Channel, { foreignKey: 'adminID' });
+Channel.belongsTo(Admin, { foreignKey: 'adminID' });
 
 export default Channel;

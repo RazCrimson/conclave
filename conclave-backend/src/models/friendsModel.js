@@ -38,6 +38,6 @@ const Friends = sequelize.define('friends', {
   paranoid: true,
 });
 
-User.belongsToMany(User, { as: 'userId', through: 'friends', foreignKey: 'userId', otherKey: 'friendId' });
+User.belongsToMany(User, { as: 'userId', through: 'friends', foreignKey: 'userID', otherKey: 'friendID' });
 
 export default Friends;

@@ -27,9 +27,9 @@ const CommentVote = sequelize.define('commentVote', {
   },
 }, { timestamps: true });
 
-User.hasMany(CommentVote);
-Comment.hasMany(CommentVote);
-CommentVote.belongsTo(User);
-CommentVote.belongsTo(Comment);
+User.hasMany(CommentVote, { foreignKey: 'userID' });
+Comment.hasMany(CommentVote, { foreignKey: 'commentID' });
+CommentVote.belongsTo(User, { foreignKey: 'userID' });
+CommentVote.belongsTo(Comment, { foreignKey: 'commentID' });
 
 export default CommentVote;
