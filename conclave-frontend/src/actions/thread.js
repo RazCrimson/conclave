@@ -157,7 +157,7 @@ export const deleteThreadFailure = error => {
   };
 };
 
-export const castThreadVote = (id, vote) => {
+export const castThreadVote = (id, vote) => dispatch => {
   dispatch(castThreadVoteRequest());
 
   castThreadVoteApi(id, vote)

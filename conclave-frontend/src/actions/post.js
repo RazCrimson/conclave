@@ -4,9 +4,12 @@ import {
   CREATE_POST_FAILURE,
   DELETE_POST_REQUEST,
   DELETE_POST_SUCCESS,
-  DELETE_POST_FAILURE, VOTE_THREAD_REQUEST, VOTE_THREAD_SUCCESS, VOTE_THREAD_FAILURE,
+  DELETE_POST_FAILURE,
+  VOTE_THREAD_REQUEST,
+  VOTE_THREAD_SUCCESS,
+  VOTE_THREAD_FAILURE,
 } from './types';
-import {createPostApi, fetchThreadApi, deletePostApi, castThreadVoteApi, castPostVoteApi} from '../api';
+import {createPostApi, fetchThreadApi, deletePostApi, castPostVoteApi} from '../api';
 import {fetchThreadSuccess, fetchThreadFailure} from './thread';
 import {apiErrorHandler} from '../utils/errorhandler';
 
@@ -97,16 +100,16 @@ export const deletePostFailure = (id, error) => {
   };
 };
 
-export const castPostVote = (id, vote) => {
-  dispatch(castThreadVoteRequest());
+export const castPostVote = (id, vote) => dispatch => {
+  dispatch(castPostVoteRequest());
 
   castPostVoteApi(id, vote)
       .then(response => {
-        dispatch(castThreadVoteSuccess(response.data));
+        dispatch(castPostVoteSuccess(response.data));
       })
       .catch(error => {
         const errorMessage = apiErrorHandler(error);
-        dispatch(castThreadVoteFailure(errorMessage));
+        dispatch(castPostVoteFailure(errorMessage));
       });
 };
 

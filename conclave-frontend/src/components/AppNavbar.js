@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
-import { logout } from '../actions/authActions';
+import { logout } from '../actions/auth.js';
 // import { Navbar, Nav, Container, ButtonGroup, Button } from 'react-bootstrap';
 import { Layout, Menu, Button } from 'antd';
 import 'antd/dist/antd.css';

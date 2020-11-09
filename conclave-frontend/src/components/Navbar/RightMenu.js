@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { logout } from '../../actions/authActions'
+import { logout } from '../../actions/auth.js'
 import { Menu, Grid } from 'antd';
 
 const { useBreakpoint } = Grid;

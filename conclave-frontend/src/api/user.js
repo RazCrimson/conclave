@@ -6,32 +6,30 @@ import {
   USER_EDIT_URL,
   USER_URL,
 } from './constants';
-import {getConfig} from '../utils/config';
 
 export const loginApi = (username, password) => {
-  return axios.post(USER_LOGIN_URL, {username, password}, getConfig());
+  return axios.post(USER_LOGIN_URL, {username, password});
 };
 
 export const logoutApi = () => {
-  return axios.post(USER_LOGOUT_URL, null, getConfig());
+  return axios.post(USER_LOGOUT_URL, null);
 };
 
 export const registerApi = data => {
-  return axios.post(USER_REGISTER_URL, data, getConfig());
+  return axios.post(USER_REGISTER_URL, data);
 };
 
 export const fetchUserProfileApi = username => {
-  return axios.get(USER_URL + username, getConfig());
+  return axios.get(USER_URL + username);
 };
 
 export const editProfileApi = (username, newProfile) => {
   return axios.put(
     USER_URL + username + USER_EDIT_URL,
     newProfile,
-    getConfig(),
   );
 };
 
 export const fetchUsersApi = () => {
-  return axios.get(USER_URL, getConfig());
+  return axios.get(USER_URL);
 };
