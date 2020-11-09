@@ -5,8 +5,8 @@ import Admin from './adminModel';
 
 const Channel = sequelize.define('channel', {
   channelID: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    default: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // adminID: {

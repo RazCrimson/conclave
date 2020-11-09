@@ -4,8 +4,8 @@ import sequelize from '../connections/databaseConnection';
 
 const User = sequelize.define('user', {
   userID: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    default: DataTypes.UUIDV4,
     primaryKey: true,
   },
   username: {

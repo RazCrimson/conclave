@@ -6,8 +6,8 @@ import Post from './postModel';
 
 const Comment = sequelize.define('comment', {
   commentID: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    default: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // userID: {

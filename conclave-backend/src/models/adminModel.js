@@ -3,8 +3,8 @@ import sequelize from '../connections/databaseConnection';
 
 const Admin = sequelize.define('admin', {
   adminID: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    default: DataTypes.UUIDV4,
     primaryKey: true,
   },
 }, {

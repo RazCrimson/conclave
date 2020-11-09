@@ -6,8 +6,8 @@ import Channel from './channelModel';
 
 const Post = sequelize.define('post', {
   postID: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    autoIncrement: true,
+    type: DataTypes.UUID,
+    default: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // userID: {
