@@ -7,8 +7,8 @@ import {
   USER_URL,
 } from './constants';
 
-export const loginApi = (username, password) => {
-  return axios.post(USER_LOGIN_URL, {username, password});
+export const loginApi = (email, password) => {
+  return axios.post(USER_LOGIN_URL, {email, password});
 };
 
 export const logoutApi = () => {

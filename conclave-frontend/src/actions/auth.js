@@ -14,10 +14,10 @@ import store from '../store';
 // import {hideModal} from './modal';
 import {apiErrorHandler} from '../utils/errorhandler';
 
-export const login = (username, password) => dispatch => {
+export const login = (email, password) => dispatch => {
   dispatch(loginRequest());
 
-  loginApi(username, password)
+  loginApi(email, password)
     .then(response => {
       dispatch(loginSuccess(response.data));
       // dispatch(hideModal());

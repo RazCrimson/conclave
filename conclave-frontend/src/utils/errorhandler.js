@@ -10,19 +10,9 @@ export const apiErrorHandler = error => {
         }
         return erd.detail;
       }
-      if (erd[0]) return erd[0];
-      const key = Object.keys(erd)[0];
-      const errorString = erd[key][0];
-      if (['non_field_errors', 'detail'].indexOf(key) >= 0) {
-        return errorString;
+      else {
+        return 'No response';
       }
-      const errorField = String(key).replace('_', ' ');
-      return (
-        errorField.charAt(0).toUpperCase() +
-        errorField.substring(1) +
-        ': ' +
-        errorString
-      );
     }
   } catch (error) {
     console.log(error);

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { register } from '../../actions/register.js'
 import 'antd/dist/antd.css';
-import { Alert, Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
+import StatusMessage from "../statusmessage";
 
 const layout = {
     labelCol: {
@@ -20,15 +19,20 @@ const layout = {
   };
 
 
-class Register extends Component {
-    state = {
-        msg: null
-    };
+export default class Register extends Component {
 
+    // isFormValid = () => {
+    //     const {username, name, email, password, checked} = this.state;
+    //
+    //     let isFormValid = true;
+    //     if (!username || !name || !email || !password || !checked) {
+    //         isFormValid = false;
+    //     }
+    //     return isFormValid;
+    // };
 
     onFinish = e => {
-
-        const { name, email, password } = e;
+        const {name, email, password} = e;
 
         // Create user object
         const newUser = {
@@ -38,81 +42,22 @@ class Register extends Component {
         };
 
         // Attempt to register
-        this.props.register(newUser);
-}
+        this.props.handleRegister(newUser);
+
+    }
     render() {
+        let {isLoading, error} = this.props;
+
+        const statusMessage = (
+            <StatusMessage
+                error={error}
+                errorMessage={error || 'Login Error'}
+                loading={isLoading}
+                loadingMessage={'Registering your account'}
+            />
+        );
+
         return (
-            // <Form onSubmit={this.onSubmit} className='register'>
-            //     <h5>Register</h5>
-            //     {this.state.msg ? (
-            //         <Alert variant="dark">
-            //             { this.state.msg + '!!!'}
-            //         </Alert>
-            //     ) : null}
-            //     <Form.Group controlId="Name">
-            //         <Form.Label>Name</Form.Label>
-            //         <Form.Control
-            //             type="text"
-            //             name="name"
-            //             placeholder="Your Name"
-            //             onChange={this.onChange}
-            //             className="inp"
-            //         />
-            //     </Form.Group>
-            //     <Form.Group controlId="Email">
-            //         <Form.Label>Email</Form.Label>
-            //         <Form.Control
-            //             type="email"
-            //             name="email"
-            //             placeholder="something@example.com"
-            //             onChange={this.onChange}
-            //             className="inp"
-            //         />
-            //         <Form.Text className="text-muted">
-            //             We'll never share your email with anyone else.
-            //         </Form.Text>
-            //     </Form.Group>
-            //     <Form.Group controlId='Password'> 
-            //         <Form.Label>Password</Form.Label>
-            //         <Form.Control
-            //             type="password"
-            //             name="password"
-            //             placeholder='your password'
-            //             onChange={this.onChange}
-            //             className="inp"
-            //         />
-            //     </Form.Group>
-            //     <Button variant='outline-success' type="submit">Register</Button>
-            // </Form>
-                        // <Form onSubmit={this.onSubmit} className="login container">
-            //     <h5>Login</h5>
-            //     {this.state.msg ? (
-            //         <Alert variant="dark">
-            //             { this.state.msg + '!!!'}
-            //         </Alert>
-            //     ) : null}
-            //     <Form.Group controlId="Email">
-            //         <Form.Label>Email</Form.Label>
-            //         <Form.Control
-            //             type="email"
-            //             name="email"
-            //             placeholder="something@example.com"
-            //             onChange={this.onChange}
-            //             className="inp"
-            //         />
-            //     </Form.Group>
-            //     <Form.Group controlId='Password'>
-            //         <Form.Label>Password</Form.Label>
-            //         <Form.Control
-            //             type="password"
-            //             name="password"
-            //             placeholder='your password'
-            //             onChange={this.onChange}
-            //             className="inp"
-            //         />
-            //     </Form.Group>
-            //     <Button variant='outline-success' type="submit">Login</Button>
-            // </Form>
             <Form
                 {...layout}
                 name="basic"
@@ -122,15 +67,7 @@ class Register extends Component {
                 onFinish={this.onFinish}
                 className="register container"
                 >
-                {this.state.msg ? (
-                    <Alert
-                    message="Warning"
-                    description={this.state.msg}
-                    type="warning"
-                    showIcon
-                    closable
-                  />
-                ) : null}
+                {statusMessage}
                 <Form.Item
                     label="Name"
                     name="name"
@@ -184,12 +121,3 @@ class Register extends Component {
         )
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated,
-        error: state.error
-    }
-}
-
-export default connect(mapStateToProps, { register })(Register)
