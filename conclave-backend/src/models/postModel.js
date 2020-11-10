@@ -7,11 +7,11 @@ import Channel from './channelModel';
 const Post = sequelize.define('post', {
   postID: {
     type: DataTypes.UUID,
-    default: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // userID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'User',
   //     key: 'userID'
@@ -19,7 +19,7 @@ const Post = sequelize.define('post', {
   //   onUpdate: 'CASCADE'
   // },
   // channelID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'Channel',
   //     key: 'channelID'
@@ -33,17 +33,17 @@ const Post = sequelize.define('post', {
   },
   accountCreation: {
     type: DataTypes.DATE,
-    default: DataTypes.NOW,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
   },
   voteCount: {
     type: DataTypes.INTEGER,
-    default: 0,
+    defaultValue: 0,
     allowNull: false,
   },
   commentCount: {
     type: DataTypes.INTEGER.UNSIGNED,
-    default: 0,
+    defaultValue: 0,
     allowNull: false,
   },
 }, {

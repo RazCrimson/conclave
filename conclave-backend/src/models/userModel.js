@@ -5,7 +5,7 @@ import sequelize from '../connections/databaseConnection';
 const User = sequelize.define('user', {
   userID: {
     type: DataTypes.UUID,
-    default: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   username: {
@@ -19,12 +19,12 @@ const User = sequelize.define('user', {
     allowNull: false,
   },
   password: {
-    type: DataTypes.STRING(30),
+    type: DataTypes.STRING(60),
     allowNull: false,
   },
   lastOnlineAt: {
     type: DataTypes.DATE,
-    default: DataTypes.NOW,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
   },
 }, {

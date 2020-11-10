@@ -6,11 +6,11 @@ import Admin from './adminModel';
 const Channel = sequelize.define('channel', {
   channelID: {
     type: DataTypes.UUID,
-    default: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // adminID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'admin',
   //     key: 'adminID'
@@ -32,7 +32,7 @@ const Channel = sequelize.define('channel', {
   },
   accountCreation: {
     type: DataTypes.DATE,
-    default: DataTypes.NOW,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
 
   },

@@ -9,7 +9,7 @@ import User from './userModel';
 // eslint-disable-next-line object-curly-newline
 const Moderator = sequelize.define('moderator', {
   // userID: {
-  //   type: DataTypes.INTEGER,
+  //   type: DataTypes.UUID,
   //   primaryKey: true,
   //   references: {
   //     model: 'user',
@@ -18,7 +18,7 @@ const Moderator = sequelize.define('moderator', {
   //   onUpdate: 'CASCADE'
   // },
   // adminID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'Admin',
   //     key: 'adminID'

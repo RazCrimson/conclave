@@ -5,7 +5,7 @@ import User from './userModel';
 
 const Friends = sequelize.define('friends', {
   // userID1: {
-  //   type: DataTypes.INTEGER,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'user',
   //     key: 'userID'
@@ -13,7 +13,7 @@ const Friends = sequelize.define('friends', {
   //   onUpdate: 'CASCADE'
   // },
   // userID2: {
-  //   type: DataTypes.INTEGER,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'user',
   //     key: 'userID'
@@ -22,12 +22,12 @@ const Friends = sequelize.define('friends', {
   // },
   friendRequestDate: {
     type: DataTypes.DATE,
-    default: DataTypes.NOW,
+    defaultValue: DataTypes.NOW,
     allowNull: false,
   },
   friendResponseDate: {
     type: DataTypes.DATE,
-    default: null,
+    defaultValue: null,
   },
   response: {
     type: DataTypes.BOOLEAN,

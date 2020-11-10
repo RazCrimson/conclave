@@ -6,7 +6,7 @@ import Post from './postModel';
 
 const PostVote = sequelize.define('postVote', {
   // userID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.DataTypes.UUID,
   //   references: {
   //     model: 'user',
   //     key: 'userID'

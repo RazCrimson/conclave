@@ -7,11 +7,11 @@ import Post from './postModel';
 const Comment = sequelize.define('comment', {
   commentID: {
     type: DataTypes.UUID,
-    default: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   // userID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'user',
   //     key: 'userID'
@@ -19,7 +19,7 @@ const Comment = sequelize.define('comment', {
   //   onUpdate: 'CASCADE'
   // },
   // postID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'post',
   //     key: 'postID'
@@ -29,7 +29,7 @@ const Comment = sequelize.define('comment', {
   content: { type: DataTypes.STRING(5000) },
   voteCount: {
     type: DataTypes.INTEGER,
-    default: 0,
+    defaultValue: 0,
     allowNull: false,
   },
 }, {

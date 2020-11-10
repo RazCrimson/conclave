@@ -6,7 +6,7 @@ import Comment from './commentModel';
 
 const CommentVote = sequelize.define('commentVote', {
   // userID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'user',
   //     key: 'userID'
@@ -14,7 +14,7 @@ const CommentVote = sequelize.define('commentVote', {
   //   onUpdate: 'CASCADE'
   // },
   // commentID: {
-  //   type: DataTypes.INTEGER.UNSIGNED,
+  //   type: DataTypes.UUID,
   //   references: {
   //     model: 'comment',
   //     key: 'commentID'
