@@ -2,32 +2,21 @@ import LocalStrategy from 'passport-local';
 
 import User from '../../models/userModel';
 
-export const localSignInStrategy = new LocalStrategy({
+const localSignInStrategy = new LocalStrategy({
   usernameField: 'username',
-  passwordField: 'unHashedPassword',
+  passwordField: 'password',
   session: false,
 },
-((username, unHashedPassword, done) => {
-  User.findByUsernameAndPassword(username, unHashedPassword)
-    .then((user) => {
-      if (!user) {
-        return done(null, false, { message: 'Invalid Username & Password Combination.' });
-      }
-      return done(null, user);
-    }).catch((err) => done(err));
-}));
-
-export const localSignUpStrategy = new LocalStrategy({
-  usernameField: 'username',
-  passwordField: 'unHashedPassword',
-  session: false,
-},
-((username, unHashedPassword, done) => {
-  User.findOne({ where: { username } }).then((user) => {
+(username, password, done) => User.findByUsernameAndPassword(username, password)
+  .then((user) => {
     if (!user) {
-      const newUserInstance = User.build({ username, password: unHashedPassword });
-      return done(null, newUserInstance);
+      done(null, false, { status: -1, message: 'Invalid Username & Password Combination.' });
+    } else {
+      user.update({ lastOnlineAt: Date.now() }).then(() => done(null, user));
     }
-    return done(null, false, { message: 'Username already taken.' });
-  }).catch((err) => done(err));
-}));
+  }).catch((err) => {
+    console.log('err ', err);
+    done(err);
+  }));
+
+export default localSignInStrategy;
