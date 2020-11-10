@@ -19,18 +19,20 @@ const layout = {
   };
 
 export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            msg: null
-        }
-    }
+    // isFormValid = () => {
+    //     const {email, password} = this.state;
+    //
+    //     let isFormValid = true;
+    //     if (!email || !password) {
+    //         isFormValid = false;
+    //     }
+    //     return isFormValid;
+    // };
 
     onFinish = e => {
-        console.log('Submit')
         const {email, password} = e;
         this.props.handleLogin(email, password);
-}
+    }
 
 
     render() {
@@ -46,8 +48,6 @@ export default class Login extends Component {
         );
 
         return (
-            <div>
-                {statusMessage}
             <Form
                 theme = "dark"
                 {...layout}
@@ -58,6 +58,7 @@ export default class Login extends Component {
                 onFinish={this.onFinish}
                 className="login container"
                 >
+                {statusMessage}
                 <Form.Item
                     label="Email"
                     name="email"
@@ -95,7 +96,6 @@ export default class Login extends Component {
                         </Button>
                     </Form.Item>
                 </Form>
-            </div>
         )
     }
 }

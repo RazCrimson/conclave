@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import { Provider } from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import store, {persistor} from './store';
-import Register from './components/auth/register'
+import Register from './containers/register'
 import Login from './containers/login'
 import './App.css'
 export default class App extends Component {
@@ -17,7 +17,7 @@ export default class App extends Component {
               {/*<Navbar/>*/}
                 <Switch>
                 <Route path = "/login" component = {Login}/>
-                {/*<Route path = "/register" component = {Register} />*/}
+                <Route path = "/register" component = {Register} />
               </Switch>
             </Router>
         </PersistGate>
