@@ -7,7 +7,9 @@ import Post from '../models/postModel';
 import PostVote from '../models/postVoteModel';
 import Comment from '../models/commentModel';
 import CommentVote from '../models/commentVoteModel';
+import Token from '../models/tokenModel';
 
+// Initialization of Database models and constraints
 (async () => {
   try {
     await Admin.sync({ alter: true });
@@ -19,6 +21,7 @@ import CommentVote from '../models/commentVoteModel';
     await PostVote.sync({ alter: true });
     await Comment.sync({ alter: true });
     await CommentVote.sync({ alter: true });
+    await Token.sync({ alter: true });
   } catch (e) {
     console.error('databaseModel : ', e);
   }

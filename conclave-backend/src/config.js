@@ -12,8 +12,7 @@ export const databaseEnv = {
   password: process.env.DATABASE_PASSWORD,
 };
 
-export const sessionStoreEnv = {
-  secretToken: process.env.SECRET_TOKEN,
-  host: process.env.SESSION_STORE_HOST || 'localhost',
-  port: process.env.SESSION_STORE_PORT || 6379,
+export const secrets = {
+  accessTokenSecret: process.env.ACCESS_SECRET_TOKEN,
+  refreshTokenSecret: process.env.REFRESH_SECRET_TOKEN,
 };
