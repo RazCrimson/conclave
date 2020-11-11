@@ -6,8 +6,8 @@ export const signIn = async (req, res) => {
   const refreshToken = await User.createRefreshToken(req.user);
   console.log('Tokens : ', accessToken, refreshToken);
 
-  res.cookie('jwt', accessToken, { maxAge: 900000, httpOnly: true });
-  res.cookie('ref', refreshToken, { maxAge: 9000000, httpOnly: true });
+  res.cookie('conclave-auth', accessToken, { maxAge: 6000000, httpOnly: true });
+  res.cookie('conclave-refresh', refreshToken, { maxAge: 604800000, httpOnly: true });
 
   return res.status(200).json({ data: { message: 'Logged In' } });
 };
@@ -29,7 +29,8 @@ export const signUp = async (req, res) => {
   const accessToken = await User.createAccessToken(user);
   const refreshToken = await User.createRefreshToken(user);
 
-  res.cookie('refreshToken', refreshToken, { maxAge: 900000, httpOnly: true });
+  res.cookie('conclave-auth', accessToken, { maxAge: 6000000, httpOnly: true });
+  res.cookie('conclave-refresh', refreshToken, { maxAge: 604800000, httpOnly: true });
 
   return res.status(201).json({ data: { message: 'Account Created', accessToken, refreshToken } });
 };

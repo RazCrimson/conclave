@@ -12,12 +12,12 @@ const cookieExtractor = (req, cookieToSelect) => {
   return token;
 };
 
-const jwtCookieExtractor = (req) => cookieExtractor(req, 'jwt');
+const authTokenExtractor = (req) => cookieExtractor(req, 'conclave-auth');
 
-const refreshCookieExtractor = (req) => cookieExtractor(req, 'ref');
+const refreshTokenExtractor = (req) => cookieExtractor(req, 'conclave-refresh');
 
-export const jwtStrategy = new Strategy({
-  jwtFromRequest: jwtCookieExtractor,
+export const jwtAuthStrategy = new Strategy({
+  jwtFromRequest: authTokenExtractor,
   secretOrKey: secrets.accessTokenSecret,
 }, (jwtPayload, done) => {
   User.findOne({ where: { username: jwtPayload.user.name } })
@@ -31,7 +31,7 @@ export const jwtStrategy = new Strategy({
 });
 
 export const jwtRefreshStrategy = new Strategy({
-  jwtFromRequest: refreshCookieExtractor,
+  jwtFromRequest: refreshTokenExtractor,
   secretOrKey: secrets.refreshTokenSecret,
 }, (jwtPayload, done) => {
   Token.findOne({ where: { userID: jwtPayload.user.sub } })

@@ -1,13 +1,13 @@
 import passport from 'passport';
 
 import localSignInStrategy from './localStrategies';
-import { jwtStrategy, jwtRefreshStrategy } from './jwtStrategy';
+import { jwtAuthStrategy, jwtRefreshStrategy } from './jwtStrategies';
 
 passport.use('localSignIn', localSignInStrategy);
 
 passport.use('jwtRefresh', jwtRefreshStrategy);
 
-passport.use('jwt', jwtStrategy);
+passport.use('jwtAuth', jwtAuthStrategy);
 
 const passportAuth = (req, res, next, name) => {
   passport.authenticate(name, {}, (err, user, info) => {
@@ -22,9 +22,9 @@ const passportAuth = (req, res, next, name) => {
 
 export const localSignInAuth = (res, req, next) => passportAuth(res, req, next, 'localSignIn');
 
-export const jwtAuth = (res, req, next) => passportAuth(res, req, next, 'jwt');
+export const jwtAuth = (res, req, next) => passportAuth(res, req, next, 'jwtAuth');
 
-export const jwtRefresh = (res, req, next) => passportAuth(res, req, next, 'jwt');
+export const jwtRefresh = (res, req, next) => passportAuth(res, req, next, 'jwtRefresh');
 
 passport.serializeUser((user, done) => {
   done(null, user.userID);
