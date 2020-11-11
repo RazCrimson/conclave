@@ -26,7 +26,7 @@ export const jwtAuthStrategy = new Strategy({
       return done(null, false);
     }).catch((err) => {
       console.error('JWT Auth Strategy Error: ', err);
-      done(err);
+      done(err, false, { status: -1, detail: err.message });
     });
 });
 
@@ -40,6 +40,6 @@ export const jwtRefreshStrategy = new Strategy({
       return done(null, false);
     }).catch((err) => {
       console.error('JWT Refresh Strategy Error: ', err);
-      done(err);
+      done(err, false, { status: -1, detail: err.message });
     });
 });

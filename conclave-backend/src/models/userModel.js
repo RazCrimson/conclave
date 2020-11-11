@@ -46,8 +46,8 @@ User.addHook('beforeUpdate', async (user) => {
   if (user.changed('password')) user.password = await bcrypt.hash(user.password, 10);
 });
 
-User.findByUsernameAndPassword = async (username, unHashedPassword) => {
-  const user = await User.findOne({ where: { username } });
+User.findByEmailAndPassword = async (email, unHashedPassword) => {
+  const user = await User.findOne({ where: { email } });
   return bcrypt.compare(unHashedPassword, user.password).then((isMatch) => {
     if (isMatch) return user;
     return null;
