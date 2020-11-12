@@ -1,3 +1,4 @@
+import { DataTypes } from 'sequelize';
 import sequelize from '../connections/databaseConnection';
 
 import Admin from './adminModel';
@@ -8,6 +9,11 @@ import User from './userModel';
 //
 // eslint-disable-next-line object-curly-newline
 const Moderator = sequelize.define('moderator', {
+  moderatorID: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true,
+  },
   // userID: {
   //   type: DataTypes.UUID,
   //   primaryKey: true,
@@ -32,8 +38,8 @@ const Moderator = sequelize.define('moderator', {
   paranoid: true,
 });
 
-Admin.hasMany(Moderator);
+Admin.hasMany(Moderator, { foreignKey: 'adminID' });
 Moderator.belongsTo(Admin, { foreignKey: 'adminID' });
-Moderator.belongsTo(User, { foreignKey: 'userID', targetKey: 'userID' });
+Moderator.belongsTo(User, { foreignKey: 'moderatorID', targetKey: 'userID' });
 
 export default Moderator;
