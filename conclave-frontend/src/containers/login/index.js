@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import Register from "../components/auth/register";
-import {register} from "../actions";
+import {connect} from 'react-redux';
+import Login from '../../components/login';
+import {login} from "../../actions";
 
-class RegisterContainer extends Component {
+class LoginContainer extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.isAuthenticated) {
-            this.props.history.push('/home')
+            this.props.history.push('/home');
         }
     }
 
@@ -16,12 +16,12 @@ class RegisterContainer extends Component {
             isAuthenticated,
             isLoading,
             error,
-            handleRegister,
+            handleLogin,
         } = this.props;
 
         return isAuthenticated ? null : (
-            <Register
-                handleRegister={handleRegister}
+            <Login
+                handleLogin={handleLogin}
                 isLoading={isLoading}
                 error={error}
             />
@@ -30,18 +30,19 @@ class RegisterContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+    isLoading: state.auth.isLoading,
+    error: state.auth.error,
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.register.error,
-    isLoading: state.register.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleRegister: data => {
-        dispatch(register(data))
+    handleLogin: (email, password) => {
+        dispatch(login(email, password))
     }
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(RegisterContainer);
+)(LoginContainer);
+

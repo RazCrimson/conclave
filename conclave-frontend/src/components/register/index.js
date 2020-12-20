@@ -51,7 +51,7 @@ export default class Register extends Component {
         const statusMessage = (
             <StatusMessage
                 error={error}
-                errorMessage={error || 'Login Error'}
+                errorMessage={error || 'Index Error'}
                 loading={isLoading}
                 loadingMessage={'Registering your account'}
             />
