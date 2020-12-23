@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth.js';
-// import { Navbar, Nav, Container, ButtonGroup, Button } from 'react-bootstrap';
 import { Layout, Menu, Button } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -51,28 +50,6 @@ export class AppNavbar extends Component {
         )
 
         return (
-            // <Navbar expand="md" className='mb-5 nav'>
-            //     <Container>
-            //         <Navbar.Brand href="/"><span className='nav-text'>Online Compiler</span></Navbar.Brand>
-            //         <Navbar.Toggle aria-controls='navbar-collapse' />
-            //         <Navbar.Collapse id='navbar-collapse'>
-            //             <Nav className="mr-auto" navbar>
-            //                     <Nav.Link href="/"><span className='nav-text'>Home</span></Nav.Link>
-            //                 {isAuthenticated ? authLinks : guestLinks}
-            //             </Nav>
-            //             <ButtonGroup toggle className="mb-2">
-            //                 <Button
-            //                     type="checkbox"
-            //                     variant={this.props.darkMode ? "outline-dark" : "dark"}
-            //                     onClick={this.props.toggleMode}
-            //                     className='toggle-btn'
-            //                 >
-            //                 {this.props.darkMode ? "Light Mode" : "Dark Mode"}
-            //                 </Button>
-            //             </ButtonGroup>
-            //         </Navbar.Collapse>
-            //     </Container>
-            // </Navbar>
 
         <Layout className="layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: ' 75%' }}>

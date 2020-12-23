@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, PageHeader } from 'antd';
 import StatusMessage from "../statusmessage";
+import './styles.css'
 
 const layout = {
     labelCol: {
@@ -58,6 +59,8 @@ export default class Register extends Component {
         );
 
         return (
+        <div className="space-align-container">
+            <div className="space-align-block">
             <Form
                 {...layout}
                 name="basic"
@@ -67,6 +70,10 @@ export default class Register extends Component {
                 onFinish={this.onFinish}
                 className="register container"
                 >
+                <PageHeader
+                    className="site-page-header"
+                    title="Register"
+                />
                 {statusMessage}
                 <Form.Item
                     label="Name"
@@ -118,6 +125,8 @@ export default class Register extends Component {
                     </Button>
                 </Form.Item>
                 </Form>
+            </div>
+        </div>
         )
     }
 }

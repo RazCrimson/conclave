@@ -16,7 +16,7 @@ export default class App extends Component {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
             <Router>
-              {/*<Navbar/>*/}
+              {<Navbar/>}
                 <Switch>
                 <Route path = "/login" component = {Login}/>
                 <Route path = "/register" component = {Register} />

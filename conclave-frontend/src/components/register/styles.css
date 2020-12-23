@@ -1,0 +1,18 @@
+.space-align-container {
+    display: flex;
+    align-item: flex-start;
+    flex-wrap: wrap;
+}
+
+.site-page-header {
+    color: #1890ff;
+}
+
+.space-align-block {
+    width: 33%;
+    margin-top: 100px;
+    margin-left: 33%;
+    border: 1px solid #40a9ff;
+    padding: 10px;
+    flex: none;
+}
